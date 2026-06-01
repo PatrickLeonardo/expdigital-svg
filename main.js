@@ -3,6 +3,7 @@ const inputWidth = document.getElementById('input-width');
 const inputHeight = document.getElementById('input-height');
 const selectPattern = document.getElementById('select-pattern');
 const inputGridSize = document.getElementById('input-grid-size');
+const inputColor = document.getElementById('input-color');
 const inputMinOpacity = document.getElementById('input-min-opacity');
 const inputMaxOpacity = document.getElementById('input-max-opacity');
 const labelGridSize = document.getElementById('label-grid-size');
@@ -34,6 +35,7 @@ function getOptions() {
         height,
         pattern: selectPattern.value,
         gridSize,
+        inputColor: inputColor.value,
         minOpacity,
         maxOpacity,
     }

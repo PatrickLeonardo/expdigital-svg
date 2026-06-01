@@ -1,8 +1,10 @@
 const generateSVG = (options) => {
 
-    const { width, height, pattern, gridSize, minOpacity, maxOpacity } = options;
+    const { width, height, pattern, gridSize, inputColor, minOpacity, maxOpacity } = options;
     let opacity = '';
     let result = '';
+
+    console.log(inputColor)
 
     for (let y = 0; y < height; y += gridSize) {
         for (let x = -gridSize; x < width; x += gridSize) {
@@ -13,13 +15,13 @@ const generateSVG = (options) => {
 
                 case('squares'):
                     result += `
-                        <rect x="${x}" y="${y}" width="${gridSize}" height="${gridSize}" fill="#000080" fill-opacity="${opacity}" stroke-width="0" />
+                        <rect x="${x}" y="${y}" width="${gridSize}" height="${gridSize}" fill="${inputColor}" fill-opacity="${opacity}" stroke-width="0" />
                     `;
                     break;
                 
                 case('circles'):
                     result += `
-                        <circle cx="${x*2}" cy="${y*2}" r="${gridSize}" fill="#000080" fill-opacity="${opacity}" stroke-width="0" />
+                        <circle cx="${x*2}" cy="${y*2}" r="${gridSize}" fill="${inputColor}" fill-opacity="${opacity}" stroke-width="0" />
                     `
                     break;
                 
@@ -27,14 +29,14 @@ const generateSVG = (options) => {
                     
                     result += `
                         <polygon points="${x + gridSize / 2},${y} ${x},${y + gridSize} ${x + gridSize},${y + gridSize}"
-                        fill="#000080" fill-opacity="${opacity}" stroke-width="0" />
+                        fill="${inputColor}" fill-opacity="${opacity}" stroke-width="0" />
                     `;
                     
                     opacity = randomBetween(minOpacity, maxOpacity).toFixed(2);
 
                     result += `
                         <polygon points="${x + gridSize / 2},${y} ${x+gridSize * 1.5},${y} ${x + gridSize},${y + gridSize}"
-                        fill="#000080" fill-opacity="${opacity}" stroke-width="0" />      
+                        fill="${inputColor}" fill-opacity="${opacity}" stroke-width="0" />      
                     `;
                     break;
                 
